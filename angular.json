@@ -98,18 +98,33 @@
           "options": {
             "tsConfig": [
               "apps/booking/booking-desktop/tsconfig.app.json",
-              "apps/booking/booking-desktop/tsconfig.spec.json",
-              "apps/booking/booking-desktop/e2e/tsconfig.json"
+              "apps/booking/booking-desktop/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "booking-desktop-e2e": {
+      "projectType": "application",
+      "root": "apps/booking/booking-desktop-e2e",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/booking/booking-desktop-e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/booking/booking-desktop-e2e/**"
             ]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "apps/booking/booking-desktop/e2e/protractor.conf.js",
+            "protractorConfig": "apps/booking/booking-desktop-e2e/protractor.conf.js",
             "devServerTarget": "booking-desktop:serve"
           },
           "configurations": {
@@ -119,6 +134,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "booking-desktop"
 }
