@@ -1,3 +1,4 @@
+// apps/booking/booking-desktop-e2e/src/app.po.ts
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
@@ -6,6 +7,6 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('booking-root .content span')).getText() as Promise<string>;
+    return element(by.css('booking-root h1')).getText() as Promise<string>;
   }
 }
