@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ShellComponent } from './shell/shell.component';
+import { BookingDataAccessModule } from '@nrwl-airlines/booking/data-access';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   exports: [RouterModule],
   imports: [
     RouterModule.forRoot(routes),
+    BookingDataAccessModule,
     CommonModule,
   ],
 })
