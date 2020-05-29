@@ -11,7 +11,13 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
-    children: [],
+    children: [
+      {
+        path: 'passenger-info',
+        loadChildren: () => import('@nrwl-airlines/booking/feature-passenger-info')
+          .then(({ BookingFeaturePassengerInfoModule }) => BookingFeaturePassengerInfoModule)
+      }
+    ],
   },
 ];
 
