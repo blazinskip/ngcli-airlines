@@ -13,6 +13,17 @@ const routes: Routes = [
     component: ShellComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'flight-search',
+      },
+      {
+        path: 'flight-search',
+        loadChildren: () =>
+          import('@nrwl-airlines/booking/feature-flight-search')
+            .then(esModule => esModule.BookingFeatureFlightSearchModule),
+      },
+      {
         path: 'passenger-info',
         loadChildren: () => import('@nrwl-airlines/booking/feature-passenger-info')
           .then(({ BookingFeaturePassengerInfoModule }) => BookingFeaturePassengerInfoModule)
