@@ -332,7 +332,13 @@
             "styles": [
               "apps/booking/booking-mobile/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "fileReplacements": [
+              {
+                "replace": "libs/booking/feature-flight-search/src/lib/flight-search/flight-search.component.html",
+                "with": "libs/booking/feature-flight-search/src/lib/flight-search/flight-search.mobile.component.html"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -340,6 +346,10 @@
                 {
                   "replace": "libs/shared/environments/src/lib/environment.ts",
                   "with": "libs/shared/environments/src/lib/environment.prod.ts"
+                },
+                {
+                  "replace": "libs/booking/feature-flight-search/src/lib/flight-search/flight-search.component.html",
+                  "with": "libs/booking/feature-flight-search/src/lib/flight-search/flight-search.mobile.component.html"
                 }
               ],
               "optimization": true,
@@ -403,19 +413,34 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/booking/booking-mobile/tsconfig.app.json",
-              "apps/booking/booking-mobile/tsconfig.spec.json",
-              "apps/booking/booking-mobile/e2e/tsconfig.json"
+              "apps/booking/booking-desktop/tsconfig.app.json",
+              "apps/booking/booking-desktop/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "booking-mobile-e2e": {
+      "projectType": "application",
+      "root": "apps/booking/booking-mobile-e2e",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/booking/booking-mobile-e2e/tsconfig.json",
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/booking/booking-mobile-e2e/**"
             ]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "apps/booking/booking-mobile/e2e/protractor.conf.js",
+            "protractorConfig": "apps/booking/booking-mobile-e2e/protractor.conf.js",
             "devServerTarget": "booking-mobile:serve"
           },
           "configurations": {
